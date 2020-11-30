@@ -47,6 +47,9 @@
                     let fuel = document.querySelector("input[name=fuelLevel]");
                     let cargo = document.querySelector("input[name=cargoMass]");
                     
+                    if (pilot.value === "" || copilot.value === "" || fuel.value === "" || cargo.value === ""){
+                        alert("All fields are required!");
+                    }
                 });
             });
         </script>  
