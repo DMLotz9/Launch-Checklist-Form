@@ -60,17 +60,20 @@
                         document.getElementById("pilotStatus").innerHTML= `Pilot ${document.querySelector("input[name=pilotName]").value} Ready!`;
                         document.getElementById("copilotStatus").innerHTML= `Co-pilot ${document.querySelector("input[name=copilotName]").value} Ready!`;
                         document.getElementById("launchStatus").style.color="green";
+                        document.getElementById("launchStatus").innerHTML="Shuttle ready to launch!"
 
                             if (fuel < 10000){
                             document.getElementById("fuelStatus").innerHTML= "Fuel level too low for launch!";
                             document.getElementById("launchStatus").style.color="red";
+                            document.getElementById("launchStatus").innerHTML="Shuttle NOT ready to launch!"
                         } else if (fuel >= 10000){
                             document.getElementById("fuelStatus").innerHTML= "Fuel level sufficient for launch!";
                         };
                             if (cargo > 10000){
                             document.getElementById("cargoStatus").innerHTML= "Cargo mass too heavy for takeoff!";
                             document.getElementById("launchStatus").style.color="red";
-                        } else if (fuel <= 10000){
+                            document.getElementById("launchStatus").innerHTML="Shuttle NOT ready to launch!"
+                        } else if (cargo <= 10000){
                             document.getElementById("cargoStatus").innerHTML= "Cargo mass sufficient for launch!";
                         };
                         
