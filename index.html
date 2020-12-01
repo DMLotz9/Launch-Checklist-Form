@@ -11,7 +11,7 @@
             <!-- Fetch some planetary data -->
         </div> 
         <div id="launchForm">
-            <form action="index.html?submitted" method="POST">
+            <form action="" method="POST">
                 <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
                     <label>Pilot Name <input type="text" name="pilotName" id="pilotName"/></label>
                 </div>
@@ -31,8 +31,8 @@
             <h2 id="launchStatus">Awaiting Information Before Launch</h2>
             <div  id="faultyItems">
                 <ol>
-                    <li id="pilotStatus">Pilot pilot Ready</li>
-                    <li id="copilotStatus">Co-pilot copilot Ready</li>
+                    <li id="pilotStatus">Pilot Ready</li>
+                    <li id="copilotStatus">Co-pilot Ready</li>
                     <li id="fuelStatus">Fuel level high enough for launch</li>
                     <li id="cargoStatus">Cargo mass low enough for launch</li>
                 </ol>
@@ -55,13 +55,31 @@
                         event.preventDefault();
                     } 
                     else {
-                        alert("Submitted.");
-                    }
+                        event.preventDefault();
+                        document.getElementById("faultyItems").style.visibility = 'visible';
+                        document.getElementById("pilotStatus").innerHTML= `Pilot ${document.querySelector("input[name=pilotName]").value} Ready!`;
+                        document.getElementById("copilotStatus").innerHTML= `Co-pilot ${document.querySelector("input[name=copilotName]").value} Ready!`;
+                        document.getElementById("launchStatus").style.color="green";
+
+                            if (fuel < 10000){
+                            document.getElementById("fuelStatus").innerHTML= "Fuel level too low for launch!";
+                            document.getElementById("launchStatus").style.color="red";
+                        } else if (fuel >= 10000){
+                            document.getElementById("fuelStatus").innerHTML= "Fuel level sufficient for launch!";
+                        };
+                            if (cargo > 10000){
+                            document.getElementById("cargoStatus").innerHTML= "Cargo mass too heavy for takeoff!";
+                            document.getElementById("launchStatus").style.color="red";
+                        } else if (fuel <= 10000){
+                            document.getElementById("cargoStatus").innerHTML= "Cargo mass sufficient for launch!";
+                        };
+                        
+                    };
+
+                    
+
+                    
                 });
-                
-                if(window.location.href.indexOf("submitted") > -1){
-                document.getElementById("faultyItems").style.visibility = 'visible';
-                }
 
             });
 
@@ -69,5 +87,3 @@
         </script>  
     </body>
 </html>
-
-<!--Comment here-->
